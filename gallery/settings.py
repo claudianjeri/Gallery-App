@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'bootstrap4',
-    # 'arts.apps.ArtsConfig',
+    # 'art.apps.ArtConfig',
     'arts',
     'django.contrib.admin',
     'django.contrib.auth',
