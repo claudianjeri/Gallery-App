@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'arts.apps.ArtsConfig',
+    'bootstrap4',
+    # 'arts.apps.ArtsConfig',
     'arts',
     'django.contrib.admin',
     'django.contrib.auth',
