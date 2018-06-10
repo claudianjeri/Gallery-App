@@ -2,13 +2,18 @@ from django.db import models
 
 # Create your models here.
 class Location(models.Model):
-    place = models.CharField(max_length = 30)
+    location = models.CharField(max_length = 30)
 
     def __str__(self):
-        return self.place
+        return self.location
 
     def save_location(self):
         self.save()
+
+    @classmethod
+    def update_location(cls, id, location, update):
+        updated = cls.objects.filter(id=id).update(location=update)
+        return updated
 
     def delete_location(self):
         self.delete()
@@ -26,10 +31,10 @@ class Category(models.Model):
         self.delete()
 
 class Image(models.Model):
+    image_url = models.ImageField(upload_to = 'categories/',null=True,blank=True)
     name = models.CharField(max_length=30)
     description = models.TextField()
     upload_date = models.DateTimeField(auto_now_add=True)
-    image_url = models.ImageField(upload_to = 'categories/',null=True,blank=True)
     location = models.ManyToManyField(Location)
     category = models.ManyToManyField(Category)
 

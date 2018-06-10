@@ -1,27 +1,30 @@
-{% load bootstrap4 %}
-{% load static %}
+{% load bootstrap4 %} {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
 
-    {% if title %}
+<head>
+    <meta charset="UTF-8"> {% if title %}
     <title>PhotoGallery - {{title}}</title>
     {% else %}
     <title>PhotoGallery</title>
-    {% endif %}
-
-    {% block styles %}
-        {% bootstrap_css %}
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% endblock %}
+    {% endif %} {% block styles %} {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endblock %}
 
 </head>
+
 <body>
     {% include 'navbar.html' %}
-    {% block content %}
-    
-    {% endblock %}
+
+    <div class="container">
+
+    </div>
+    {% block content %} {% endblock %}
 
 </body>
+<style>
+    .container {
+        background-image: url('{% static "img/_S4A0037.jpg" %}');
+    }
+</style>
+
 </html>

@@ -27,7 +27,7 @@ class CategoryTestClass(TestCase):
 class LocationTestClass(TestCase):
     #set up method
     def setUp(self):
-        self.Nairobi = Location(place="Nairobi")
+        self.Nairobi = Location(location="Nairobi")
 
     #testing instance
     def test_instance(self):
@@ -55,11 +55,11 @@ class ImageTestClass(TestCase):
         self.Potraits.save()
 
         #creating new location and saving it
-        self.Nairobi = Location(place="Nairobi")
+        self.Nairobi = Location(location="Nairobi")
         self.Nairobi.save()
 
         self.Potrait.location.add(self.Nairobi)
-        self.Potrait.category.add(self.Potraits)g
+        self.Potrait.category.add(self.Potraits)
 
     #testing instance
     def test_instance(self):
