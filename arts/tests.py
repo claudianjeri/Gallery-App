@@ -59,7 +59,7 @@ class ImageTestClass(TestCase):
         self.Nairobi.save()
 
         self.Potrait.location.add(self.Nairobi)
-        self.Potrait.category.add(self.Potraits)
+        self.Potrait.category.add(self.Potraits)g
 
     #testing instance
     def test_instance(self):
