@@ -11,16 +11,25 @@
   </script>
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <img src="{{image.image_url.url}}" class="img-responsive img-thumbnail" alt="">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <img src="{{image.image_url.url}}" class="" alt="">
+        {% for cat in image.category.all %}
+            <h3 class="btn btn-primary">{{cat.category_name}}</h3>
+        {% endfor %}
+        {% for loc in image.location.all %}
+            <h3 class="btn btn-primary">{{loc.place}}</h3>
+        {% endfor %}
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h1>{{image.name}}</h1>
             <p>{{image.description}}</p>
             <p>{{image.upload_date}}</p>
-            <input class="form-control" type="text" value="{{image.image_url}}" id="myInput">
+            <input class="form-control" type="text" value="https://galleryvic.herokuapp.com/media/{{image.image_url}}" id="myInput">
             <button onclick="myFunction()" class="btn-info">Copy link</button>
         </div>
+        <div class="col-md-2"></div>
     </div>
+
 </div>
 {% endblock %}
