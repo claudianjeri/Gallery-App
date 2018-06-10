@@ -2,5 +2,75 @@
 
 {% block content %}
 {{block.super}}
-
+<div class="container" style="margin-left:10%; margin-left:5%; margin-top:4%">
+    <ul class="nav nav-pills nav-justified">
+        <li class="active"><a href="#Portrait" data-toggle='pill'>Portrait</a></li>
+        <li><a href="#wedding" data-toggle='pill'>weddings</a></li>
+        <li><a href="#art" data-toggle='pill'>Art</a></li>
+        <li><a href="#Concerts" data-toggle='pill'>Concerts</a></li>
+        <li><a href="#Graduation" data-toggle='pill'>Graduation</a></li>
+    </ul>
+    <div class="tab-content" style="margin-top:4%">
+    
+    {% for img in images %}
+        {% for category in img.category.all %}
+        
+            {% if category.category_name == "Portrait" %}
+            <div id="Portrait" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade in active">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <img src="{{img.image_url.url}}" alt="{{img.name}}">
+                    </div>
+                    <div class="panel-footer">
+                        <button class="btn btn-default" style="margin-left:30%"><a href="/image/{{img.id}}">VIEW DETAILS</a></button>
+                    </div>
+                </div>
+            </div>
+            {% elif category.category_name == "wedding" %}
+            <div id="wedding" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <img src="{{img.image_url.url}}" alt="{{img.name}}">
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-default" style="margin-left:30%"><a href="/image/{{img.id}}">VIEW DETAILS</a></button>
+                        </div>
+                    </div>
+            </div>
+            {% elif category.category_name == "art" %}
+            <div id="art" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <img src="{{img.image_url.url}}" alt="{{img.name}}">
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-default" style="margin-left:30%"><a href="/image/{{img.id}}">VIEW DETAILS</a></button>
+                        </div>
+                    </div>
+            </div>
+            {% elif category.category_name == "Graduation" %}
+            <div id="Graduation" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <img src="{{img.image_url.url}}" alt="{{img.name}}">
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-default" style="margin-left:30%"><a href="/image/{{img.id}}">VIEW DETAILS</a></button>
+                        </div>
+                    </div>
+            </div>
+            {% else %}
+            <div id="Concerts" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <img src="{{img.image_url.url}}" alt="{{img.name}}">
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-default" style="margin-left:30%"><a href="/image/{{img.id}}">VIEW DETAILS</a></button>
+                        </div>
+                    </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
 {% endblock %}

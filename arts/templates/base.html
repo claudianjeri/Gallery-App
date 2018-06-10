@@ -1,4 +1,5 @@
-{% load bootstrap4 %} {% load staticfiles %}
+{% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +16,6 @@
 <body>
     {% include 'navbar.html' %}
 
-    <div class="container">
-
-    </div>
     {% block content %} {% endblock %}
 
 </body>
@@ -26,5 +24,8 @@
         background-image: url('{% static "img/_S4A0037.jpg" %}');
     }
 </style>
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% bootstrap_javascript %} {% endblock %}
 
 </html>
