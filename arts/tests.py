@@ -7,6 +7,8 @@ class CategoryTestClass(TestCase):
     #set up method
     def setUp(self):
         self.Potraits = Category(category_name="Potraits")
+    def tearDown(self):#rekebisha
+        self.Potraits = Category(category_name="Potraits")
 
     #testing instance
     def test_instance(self):

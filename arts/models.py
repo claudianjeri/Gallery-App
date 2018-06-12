@@ -31,10 +31,10 @@ class Category(models.Model):
         self.delete()
 
 class Image(models.Model):
-    image_url = models.ImageField(upload_to = 'categories/',null=True,blank=True)
     name = models.CharField(max_length=30)
     description = models.TextField()
     upload_date = models.DateTimeField(auto_now_add=True)
+    image_url = models.ImageField(upload_to = 'categories/',null=True,blank=True)
     location = models.ManyToManyField(Location)
     category = models.ManyToManyField(Category)
 
