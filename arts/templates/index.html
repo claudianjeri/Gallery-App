@@ -1,117 +1,120 @@
-{% block content %}
-
-<div class="container" style="margin-left:10%; margin-left:5%; margin-top:4%">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Simon_Pixels</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <button>
-                        <a class="nav-link" href="#">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button>
-                        <a class="nav-link" id="Portrait" data-toggle="pill">Portraits</a>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="arts" data-toggle="pill">Arts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="weddings" data-toggle="pill">Weddings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="Gradutation" data-toggle="pill">Graduations</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="Concerts" data-toggle="pill">Concerts</a>
-                </li>
-
-            </ul>
-            <form action="{% url 'search' %}" role='search' class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" class="form-control" placeholder="Enter Category" name="category">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
-
-            </form>
-        </div>
-    </nav>
-    <div class="tab-content" style="margin-top:4%">
-
-        {% for img in images %} {% for category in img.category.all %} {% if category.category_name == "Portrait" %}
-        <div id="Portrait" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade in active">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <img src="{{img.image_url.url}}" alt="{{img.name}}">
-                </div>
-                <div class="panel-footer">
-                    <button class="btn btn-default" style="margin-left:30%">
-                        <a href="/image/{{img.id}}">VIEW DETAILS</a>
-                    </button>
-                </div>
+{% extends 'base.html' %} {% block content %} {{block.super}}
+<div class="wrapper" style="background-image: url('https://farm3.staticflickr.com/2439/4100532594_19b629609d_b.jpg'); margin-top:0; background-repeat: no-repeat;background-size: cover; background-position: center; height:650px; ">
+    <div class="container">
+        <hr>
+        <div class="split left">
+            <div class="wrapper2">
+                <h1 class="text">
+                    <div class="line">
+                        <p>Simon</p>
+                        <p>Pixes</p>
+                    </div>
+                    <!-- <div class="line">
+                    <p>Dance</p>
+    
+                </div> -->
+                </h1>
             </div>
         </div>
-        {% elif category.category_name == "wedding" %}
-        <div id="wedding" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <img src="{{img.image_url.url}}" alt="{{img.name}}">
-                </div>
-                <div class="panel-footer">
-                    <button class="btn btn-default" style="margin-left:30%">
-                        <a href="/image/{{img.id}}">VIEW DETAILS</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        {% elif category.category_name == "art" %}
-        <div id="art" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <img src="{{img.image_url.url}}" alt="{{img.name}}">
-                </div>
-                <div class="panel-footer">
-                    <button class="btn btn-default" style="margin-left:30%">
-                        <a href="/image/{{img.id}}">VIEW DETAILS</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        {% elif category.category_name == "Graduation" %}
-        <div id="Graduation" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <img src="{{img.image_url.url}}" alt="{{img.name}}">
-                </div>
-                <div class="panel-footer">
-                    <button class="btn btn-default" style="margin-left:30%">
-                        <a href="/image/{{img.id}}">VIEW DETAILS</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        {% else %}
-        <div id="Concerts" class="col-lg-4 col-md-4 col-sm-12 tab-pane fade">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <img src="{{img.image_url.url}}" alt="{{img.name}}">
-                </div>
-                <div class="panel-footer">
-                    <button class="btn btn-default" style="margin-left:30%">
-                        <a href="/image/{{img.id}}">VIEW DETAILS</a>
-                    </button>
-                </div>
-            </div>
-        </div>
+        <nav class="navbar navbar-light bg-light" style="margin-top:9%; margin-left:10%; margin-right:10%;">
+
+            <span></span>
+            <!-- <div class="navbar-nav"> -->
+            {% for category in categories %}
+
+            <a href="/category/{{category.category_name}}" class="action-button shadow animate blue">
+                {{category.category_name}}</a> 
+            {% empty %}
+            <h1>No Categories</h1>
+            {% endfor %}
+            <!-- </div> -->
+        </nav>
+
+        <form style="margin-top:8%; margin-left:10%; margin-right:10%; ">
+            <input class="form-control form-control-lg" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark " type="submit" style="margin-left:40%; margin-top: 3%;">Search</button>
+        </form>
     </div>
 </div>
-{% endif %} {% endfor %} {% endfor %} {% endblock %}
+<style>
+    .split {
+        height: 100%;
+        width: 100%;
+
+    }
+
+    .wrapper2 {
+
+        position: absolute;
+        margin-left: 45%;
+        margin-top: 20%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .text {
+        margin: 0;
+        font-size: 86px;
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .text .line {
+        overflow: hidden;
+        white-space: nowrap;
+        height: 70px;
+        line-height: .9;
+    }
+
+    .text .line:first-child+.line {
+        margin-left: 75px;
+    }
+
+    .text .line:first-child+.line+.line {
+        margin-left: 150px;
+    }
+
+    .text .line>p {
+        margin: 0;
+        height: 70px;
+        overflow: hidden;
+        font-size: 1em;
+        line-height: .9;
+        white-space: nowrap;
+        -webkit-animation: moveWords 6s infinite ease;
+        animation: moveWords 6s infinite ease;
+    }
+
+    @-webkit-keyframes moveWords {
+        0% {
+            -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+        }
+        50% {
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+        }
+        100% {
+            -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+        }
+    }
+
+    @keyframes moveWords {
+        0% {
+            -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+        }
+        50% {
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+        }
+        100% {
+            -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+        }
+    }
+</style>
+{% endblock %}

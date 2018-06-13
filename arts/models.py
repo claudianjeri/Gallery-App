@@ -4,8 +4,7 @@ from django.db import models
 class Location(models.Model):
     location = models.CharField(max_length = 30)
 
-    def __str__(self):
-        return self.location
+    
 
     def save_location(self):
         self.save()
@@ -18,11 +17,12 @@ class Location(models.Model):
     def delete_location(self):
         self.delete()
 
+    def __str__(self):
+            return self.location
 class Category(models.Model):
     category_name = models.CharField(max_length=30)
 
-    def __str__(self):
-        return self.category_name
+   
 
     def save_category(self):
         self.save()
@@ -30,6 +30,9 @@ class Category(models.Model):
     def delete_category(self):
         self.delete()
 
+    def __str__(self):#try deleting it ..
+        
+            return self.category_name
 class Image(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
@@ -55,6 +58,11 @@ class Image(models.Model):
     @classmethod
     def filter_by_location(cls,id):
         images = Image.objects.filter(id=location.id)
+        return images
+
+    @classmethod
+    def filter_by_category(cls,id,category):
+        images = Image.objects.filter(id=category.id)
         return images
 
     @classmethod

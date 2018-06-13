@@ -8,28 +8,7 @@
       document.execCommand("Copy");
       alert("Copied the text: " + copyText.value);
     }
-  </script>
-<div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-            <img src="{{image.image_url.url}}" class="" alt="">
-        {% for cat in image.category %}
-            <h3 class="btn btn-primary">{{cat.category_name}}</h3>
-        {% endfor %}
-        {% for loc in image.location%}
-            <h3 class="btn btn-primary">{{loc.place}}</h3>
-        {% endfor %}
-        </div>
-        <div class="col-md-4">
-            <h1>{{image.name}}</h1>
-            <p>{{image.description}}</p>
-            <p>{{image.upload_date}}</p>
-            <input class="form-control" type="text" value=" " id="myInput">
-            <button onclick="myFunction()" class="btn-info">Copy link</button>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
+</script>
 
-</div>
+
 {% endblock %}

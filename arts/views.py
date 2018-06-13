@@ -1,12 +1,13 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse #this is returns a response to a user
-from .models import Image
+from .models import Image, Category, Location
 
 # Create your views here.
 
 def home(request):
     image = Image.get_images()
-    return render(request,'index.html',{"image":image})
+    category = Category.objects.all()
+    return render(request,'index.html',{"image":image ,"categories":category})
 
 def search(request):
         if 'category' in request.GET and request.GET["category"]:
@@ -14,10 +15,10 @@ def search(request):
             searched_category = Image.search_by_category(search_term)
             
 
-            return render(request,'search.html',{"message":search_term,"categories":searched_category})
+            return render(request,'search.html',{"messages":search_term,"categories":searched_category})
 
         else:
-            message = "You havent searched any category"
+            message = "You haven't searched any category"
             return render(request,'search.html',{"message":message})
 
 def image(request,image_id):
@@ -29,7 +30,8 @@ def image(request,image_id):
 
 def filter(request):
     image = Image.get_images()
-    return render(request,'location.html',{"images":image})
+    category = Category.objects.all()
+    return render(request,'location.html',{"images":image ,"categories":category})
 
 
 
